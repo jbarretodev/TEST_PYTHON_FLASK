@@ -36,11 +36,12 @@ class EmployeeResource(Resource):
         if errors:
             return {'errors': errors}, 400
         
+        
         if check_email_exist(data['email']):
             return {'error': 'Email already exists'}, 400
         
         employee = Employee.create(name=data['name'], department=data['department'], email=data['email'])
-        
+        print("creado")
         employee_data = {
             'id': employee.id,
             'name': employee.name,
